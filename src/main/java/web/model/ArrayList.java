@@ -66,7 +66,7 @@ public class ArrayList<T extends EntityCommon> extends java.util.ArrayList<T>{
 		
 		int index = 1 ; 
 		for( EntityCommon entity : this ) {
-			entity.setRowNumer( page*size + index );
+			entity.setRno( page*size + index );
 			index ++ ; 
 		}
 	}

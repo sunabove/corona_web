@@ -33,11 +33,11 @@ public class CoronaController {
 		
 		ArrayList<Corona> list = new ArrayList<Corona>();
 		
-		int rowNumber = 0 ; 
+		int rno = 0 ; 
 		for( Corona obj : it ) {
-			obj.setRowNumer(rowNumber);
+			obj.setRno(rno);
 			list.add( obj );
-			rowNumber ++ ; 
+			rno ++ ; 
 		}
 		
 		return list;

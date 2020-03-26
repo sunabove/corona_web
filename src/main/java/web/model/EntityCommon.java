@@ -29,7 +29,7 @@ public abstract class EntityCommon extends WebObject {
 	
 	@Getter @Setter public Boolean deleted = false ;
 	
-	@Getter @Setter public transient int rowNumer = 0 ; 
+	@Getter @Setter public transient int rno = 0 ; 
 	
 	public EntityCommon() {
 	}
