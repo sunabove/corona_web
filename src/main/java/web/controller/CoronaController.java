@@ -37,7 +37,7 @@ public class CoronaController {
 		for( Corona obj : it ) {
 			obj.setRno(rno);
 			list.add( obj );
-			rno ++ ; 
+			rno ++ ;  
 		}
 		
 		return list;
