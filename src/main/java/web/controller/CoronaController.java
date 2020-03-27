@@ -49,7 +49,7 @@ public class CoronaController {
 			int rno = 0 ; 
 			for( Corona obj : it ) {
 				obj.setRno(rno);
-				list.add( obj );
+				list.add( obj ); 
 				rno ++ ;  
 			}
 		} else {
