@@ -36,12 +36,13 @@ public class CoronaController {
 	private static final SimpleDateFormat upDtFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	
 	@GetMapping("data.json")
-	public ArrayList<Corona> corona(@RequestParam(value="up_dt", defaultValue = "") String upDtSt ) {
-		upDtSt = upDtSt.trim();
+	public ArrayList<Corona> corona(@RequestParam(value="up_dt", defaultValue = "") Long upDtLong ) { 
+		
+		log.info( "upDtLong = " + upDtLong );
 				
 		CoronaList list ; 
 		
-		if( 1 > upDtSt.length()  ) { 
+		if( null == upDtLong ) { 
 			Iterable<Corona> it = this.coronaRepository.findAll(); 
 			
 			list= new CoronaList();
@@ -53,16 +54,9 @@ public class CoronaController {
 				rno ++ ;  
 			}
 		} else {
-			Timestamp upDt = new Timestamp(System.currentTimeMillis());
-			try {
-				upDt = new Timestamp( upDtFormat.parse( upDtSt ).getTime() );
-			} catch (ParseException e) { 
-				e.printStackTrace();
-			}
-			list = this.coronaRepository.findAllByUpDtGreaterThanEqualOrderById(upDt);
+			Timestamp upDt = new Timestamp( upDtLong ); 
+			list = this.coronaRepository.findAllByUpDtGreaterThanOrderById(upDt);
 		}
-		
-		
 		
 		return list;
 	}

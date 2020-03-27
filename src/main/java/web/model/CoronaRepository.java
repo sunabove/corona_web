@@ -6,6 +6,6 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 
 public interface CoronaRepository extends PagingAndSortingRepository<Corona, Long> { 
 	
-	CoronaList findAllByUpDtGreaterThanEqualOrderById(Timestamp upDt);
+	CoronaList findAllByUpDtGreaterThanOrderById(Timestamp upDt);
 	
 }
