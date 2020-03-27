@@ -9,12 +9,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-@EnableAutoConfiguration
+//@EnableAutoConfiguration
 @Configuration
 @SpringBootApplication
-@ComponentScan( "web")
+@ComponentScan( "web" )
 @EntityScan(basePackageClasses=web.model.EntityCommon.class)
-@EnableJpaRepositories("web")
+@EnableJpaRepositories( "web" )
 @EnableWebMvc
 public class CoronaMapApplication {
 
