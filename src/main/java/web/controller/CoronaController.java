@@ -3,6 +3,7 @@ package web.controller;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,9 +12,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.extern.log4j.Log4j;
+
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import web.model.CodeRepository;
 import web.model.Corona;
+import web.model.CoronaList;
 import web.model.CoronaRepository;
 
 @RequestMapping("/corona")
@@ -26,19 +33,36 @@ public class CoronaController {
 	
 	@Autowired public CoronaRepository coronaRepository;
 	
+	private static final SimpleDateFormat upDtFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	
 	@GetMapping("data.json")
-	public ArrayList<Corona> corona(@RequestParam(value = "name", defaultValue = "World") String name) {
+	public ArrayList<Corona> corona(@RequestParam(value="up_dt", defaultValue = "") String upDtSt ) {
+		upDtSt = upDtSt.trim();
+				
+		CoronaList list ; 
 		
-		Iterable<Corona> it = this.coronaRepository.findAll();
-		
-		ArrayList<Corona> list = new ArrayList<Corona>();
-		
-		int rno = 0 ; 
-		for( Corona obj : it ) {
-			obj.setRno(rno);
-			list.add( obj );
-			rno ++ ;  
+		if( 1 > upDtSt.length()  ) { 
+			Iterable<Corona> it = this.coronaRepository.findAll(); 
+			
+			list= new CoronaList();
+			
+			int rno = 0 ; 
+			for( Corona obj : it ) {
+				obj.setRno(rno);
+				list.add( obj );
+				rno ++ ;  
+			}
+		} else {
+			Timestamp upDt = new Timestamp(System.currentTimeMillis());
+			try {
+				upDt = new Timestamp( upDtFormat.parse( upDtSt ).getTime() );
+			} catch (ParseException e) { 
+				e.printStackTrace();
+			}
+			list = this.coronaRepository.findAllByUpDtGreaterThanEqual(upDt);
 		}
+		
+		
 		
 		return list;
 	}
