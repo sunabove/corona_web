@@ -59,7 +59,7 @@ public class CoronaController {
 			} catch (ParseException e) { 
 				e.printStackTrace();
 			}
-			list = this.coronaRepository.findAllByUpDtGreaterThanEqual(upDt);
+			list = this.coronaRepository.findAllByUpDtGreaterThanEqualOrderById(upDt);
 		}
 		
 		

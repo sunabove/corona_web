@@ -19,8 +19,8 @@ public class Corona extends EntityCommon {
 	private static final long serialVersionUID = 7651442912976880520L;
 
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY) 
-	@Column( updatable = false, nullable = false)
-	@Getter @Setter public Long coronaId ;   
+	@Column( name="corona_id", updatable = false, nullable = false)
+	@Getter @Setter public Long id ;   
 	
 	@Getter @Setter public String place ;	
 	@Getter @Setter public String patient ; 
