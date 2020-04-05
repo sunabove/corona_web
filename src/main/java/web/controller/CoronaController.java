@@ -36,13 +36,21 @@ public class CoronaController {
 	private static final SimpleDateFormat upDtFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	
 	@GetMapping("data.json")
-	public ArrayList<Corona> corona(@RequestParam(value="up_dt", defaultValue = "") Long upDtLong ) { 
+	public ArrayList<Corona> corona(@RequestParam(value="up_dt", defaultValue = "") String upDtText ) throws ParseException {
 		
-		log.info( "upDtLong = " + upDtLong );
+		log.info( "upDtText = " + upDtText );
+
+		long upDtLong = 0 ;
+
+		try {
+			upDtLong = Long.valueOf( upDtText.trim() ) ;
+		} catch ( Exception e ) {
+			upDtLong = upDtFormat.parse( upDtText.trim() ).getTime();
+		}
 				
 		CoronaList list ; 
 		
-		if( null == upDtLong ) { 
+		if( 1 > upDtLong ) {
 			Iterable<Corona> it = this.coronaRepository.findAll(); 
 			
 			list= new CoronaList();
