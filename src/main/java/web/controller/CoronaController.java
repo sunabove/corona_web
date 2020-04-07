@@ -42,10 +42,12 @@ public class CoronaController {
 
 		long upDtLong = 0 ;
 
-		try {
-			upDtLong = Long.valueOf( upDtText.trim() ) ;
-		} catch ( Exception e ) {
-			upDtLong = upDtFormat.parse( upDtText.trim() ).getTime();
+		if( 0 < upDtText.length() ) {
+			try {
+				upDtLong = Long.valueOf(upDtText.trim());
+			} catch (Exception e) {
+				upDtLong = upDtFormat.parse(upDtText.trim()).getTime();
+			}
 		}
 				
 		CoronaList list ; 
