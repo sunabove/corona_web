@@ -16,8 +16,6 @@ public abstract class ServicCommon extends WebObject {
 	@Autowired public UserRepository userRepository;
 	@Autowired public CodeRepository codeRepository;
 	@Autowired public PropRepository propRepository;
-	@Autowired public DbFileRepository dbFileRepository;
-	@Autowired public DbFileLogRepository dbFileLogRepository;
 	
 	@Autowired public BoardRepository   boardRepository;
 	@Autowired public ArticleRepository articleRepository;
