@@ -1,10 +1,10 @@
 package web.model;
 
-import java.util.List;
-
 import org.springframework.data.domain.Page;
 
-public class CoronaList extends ArrayList<Corona> { 
+import java.util.List;
+
+public class CoronaList extends java.util.ArrayList<Corona> {
 	
 	private static final long serialVersionUID = -4059339497002917210L;
 

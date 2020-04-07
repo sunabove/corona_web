@@ -57,15 +57,18 @@ public class CoronaController {
 			
 			list= new CoronaList();
 			
-			int rno = 0 ; 
 			for( Corona obj : it ) {
-				obj.setRno(rno);
-				list.add( obj ); 
-				rno ++ ;  
+				list.add( obj );
 			}
 		} else {
 			Timestamp upDt = new Timestamp( upDtLong ); 
 			list = this.coronaRepository.findAllByUpDtGreaterThanOrderById(upDt);
+		}
+
+		int rno = 0 ;
+		for( Corona obj : list ) {
+			obj.setRno(rno);
+			rno ++ ;
 		}
 		
 		return list;
