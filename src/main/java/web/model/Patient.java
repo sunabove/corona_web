@@ -23,7 +23,7 @@ public class Patient {
     @Getter @Setter public String name ;
 
     @JsonSerialize(using = PointSerializer.class)
-    @Column( name="geom", updatable = false, nullable = false)
+    @Column( name="geom", updatable = false, nullable = true )
     @Getter @Setter
     Point geom;
 
