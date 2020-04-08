@@ -27,7 +27,12 @@ public class CoronaSerializer extends JsonSerializer<Corona> {
         gen.writeStringField( "place", corona.place );
         gen.writeStringField( "patient", patient );
 
-        gen.writeObjectField( "geom", corona.geom );
+        // geom
+        gen.writeObjectFieldStart( "geom" );
+        gen.writeNumberField( "lat", corona.geom.getY() );
+        gen.writeNumberField( "lon", corona.geom.getX() );
+        gen.writeEndObject();
+        // geom
 
         gen.writeNumberField("visitFr", corona.visitFr.getTime() );
         gen.writeNumberField("visitTo", corona.visitTo.getTime() );
