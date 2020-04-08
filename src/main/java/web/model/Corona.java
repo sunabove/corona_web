@@ -12,10 +12,12 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import lombok.Getter;
 import lombok.Setter;
+import web.gson.CoronaSerializer;
 import web.gson.PointSerializer;
 
 @Entity 
-@Table(name = "corona") 
+@Table(name = "corona")
+@JsonSerialize(using = CoronaSerializer.class)
 public class Corona {
 	private static final long serialVersionUID = 7651442912976880520L;
 
@@ -29,7 +31,7 @@ public class Corona {
 	@Getter @Setter public Patient patient ;
 	
 	@JsonSerialize(using = PointSerializer.class)
-	@Getter @Setter Point geom;
+	@Getter @Setter public Point geom;
 
 	@Getter @Setter public transient int rno = 0 ;
 
