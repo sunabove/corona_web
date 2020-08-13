@@ -10,10 +10,10 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
 @SpringBootApplication
-@ComponentScan( "web" )
-@EntityScan(basePackageClasses=web.model.EntityCommon.class)
-@EnableJpaRepositories( "web" )
 @EnableWebMvc
+@ComponentScan( "web" )
+@EnableJpaRepositories( "web" )
+@EntityScan(basePackageClasses=web.model.EntityCommon.class)
 public class CoronaMapApplication {
 
 	public static void main(String[] args) {
