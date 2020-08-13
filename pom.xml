@@ -14,7 +14,7 @@
 	<version>1</version>
 	<packaging>war</packaging>
 	<name>corona_map</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Corona web server</description>
 
 	<properties>
 		<java.version>14</java.version>
