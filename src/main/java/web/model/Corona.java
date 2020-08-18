@@ -19,10 +19,9 @@ import web.gson.PointSerializer;
 @Table(
 		name = "corona",
 		indexes = {
-				@Index( name="idx_corona_01_geom", columnList = "geom" ),
-				@Index( name="idx_corona_02_place", columnList = "place" ),
-				@Index( name="idx_corona_03_visit", columnList = "visit_fr,visit_to" ),
-				@Index( name="idx_corona_04_deleted_up_dt", columnList = "deleted,up_dt" ),
+				@Index( name="idx_corona_01_place", columnList = "place" ),
+				@Index( name="idx_corona_02_visit", columnList = "visit_fr,visit_to" ),
+				@Index( name="idx_corona_03_deleted_up_dt", columnList = "deleted,up_dt" ),
 		}
 )
 @JsonSerialize(using = CoronaSerializer.class)
@@ -40,7 +39,7 @@ public class Corona {
 	@Getter @Setter public Patient patient ;
 	
 	@JsonSerialize(using = PointSerializer.class)
-	@Column( name="geom" )
+	@Column( name="geom", columnDefinition = "GEOGRAPHY(POINT,4326)", nullable = false )
 	@Getter @Setter public Point geom;
 
 	@Getter @Setter public transient int rno = 0 ;

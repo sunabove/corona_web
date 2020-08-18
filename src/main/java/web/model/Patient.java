@@ -9,7 +9,12 @@ import web.gson.PointSerializer;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "patient")
+@Table(
+        name = "patient",
+        indexes = {
+                @Index( name="idx_patient_01_name", columnList = "name" ),
+        }
+)
 public class Patient {
 
     @Id
@@ -19,11 +24,11 @@ public class Patient {
     @Setter
     public Long id ;
 
-    @Column( name="name", updatable = false, nullable = false)
+    @Column( name="name", nullable = false)
     @Getter @Setter public String name ;
 
     @JsonSerialize(using = PointSerializer.class)
-    @Column( name="geom", updatable = false, nullable = true )
+    @Column( name="geom", columnDefinition = "GEOGRAPHY(POINT,4326)", nullable = false )
     @Getter @Setter
     Point geom;
 
