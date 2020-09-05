@@ -18,6 +18,9 @@ public class WebConfig implements WebMvcConfigurer {
     spring.thymeleaf.mode=HTML
      */
 
+    public WebConfig() {
+    }
+
     @Bean
     @Description("Thymeleaf template resolver serving HTML 5")
     public ClassLoaderTemplateResolver templateResolver() {
