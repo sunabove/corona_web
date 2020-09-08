@@ -27,8 +27,7 @@ public class CoronaMapApplication {
 	}
 
 	@Bean
-	public WebServerFactoryCustomizer<ConfigurableServletWebServerFactory>
-	webServerFactoryCustomizer() {
+	public WebServerFactoryCustomizer<ConfigurableServletWebServerFactory> webServerFactoryCustomizer() {
 		// server.servlet.context-path=/corona_map
 		return factory -> factory.setContextPath("/corona_map");
 	}
