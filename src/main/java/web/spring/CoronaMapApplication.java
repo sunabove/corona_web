@@ -28,8 +28,19 @@ public class CoronaMapApplication {
 
 	@Bean
 	public WebServerFactoryCustomizer<ConfigurableServletWebServerFactory> webServerFactoryCustomizer() {
+		// server.port=8080
 		// server.servlet.context-path=/corona_map
-		return factory -> factory.setContextPath("/corona_map");
+
+		var a = new WebServerFactoryCustomizer<ConfigurableServletWebServerFactory>(){
+			@Override
+			public void customize(ConfigurableServletWebServerFactory factory) {
+				factory.setContextPath( "/corona_map");
+				factory.setPort( 8080 );
+			}
+		};
+
+		return a ;
+		//return factory -> { factory.setContextPath("/corona_map" ); factory.setPort(8080); };
 	}
 
 }
