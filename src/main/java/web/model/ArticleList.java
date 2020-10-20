@@ -11,15 +11,15 @@ public class ArticleList extends ArrayList<Article> {
 	public ArticleList() {
 	}
 	
+	public ArticleList(java.util.List<Article> list) {
+		super( list );
+	}
+
 	public ArticleList(Page<Article> page) {
 		List<Article> list = page.getContent() ;
 		if( null != list ) {
 			this.addAll( list );
 		}
-	}
-	
-	public ArticleList(java.util.List<Article> list) {
-		super( list );
 	}
 
 }
