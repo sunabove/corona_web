@@ -6,8 +6,8 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.4.1</version>
-		<relativePath /> <!-- lookup parent from repository -->
+		<version>2.4.2</version>
+		<relativePath />
 	</parent>
 
 	<groupId>corona_grp</groupId>
@@ -18,7 +18,7 @@
 	<description>Corona web server</description>
 
 	<properties>
-		<java.version>14</java.version>
+		<java.version>15</java.version>
 	</properties>
 
 	<dependencies>
@@ -98,5 +98,16 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>spring-snapshots</id>
+			<url>https://repo.spring.io/snapshot</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>spring-milestones</id>
+			<url>https://repo.spring.io/milestone</url>
+		</pluginRepository>
+	</pluginRepositories>
 
 </project>
